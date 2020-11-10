@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { selectSearchTerm } from "./searchSlice";
 
 export const myThingsSlice = createSlice({
   name: "myThings",
@@ -20,5 +21,14 @@ export const myThingsSlice = createSlice({
 export const { addThing, removeThing } = myThingsSlice.actions;
 
 export const selectMyThings = (state) => state.myThings.things;
+
+export const selectFilteredMyThings = createSelector(
+  selectMyThings,
+  selectSearchTerm,
+  (things, searchTerm) =>
+    things.filter((thing) =>
+      thing.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+);
 
 export default myThingsSlice.reducer;
