@@ -34,7 +34,7 @@ export const {
 export const selectAllThings = (state) => state.allThings.things;
 
 export const loadThings = () => async (dispatch) => {
-  dispatch(startGetThings);
+  dispatch(startGetThings());
 
   try {
     const data = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");

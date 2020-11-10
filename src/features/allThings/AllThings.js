@@ -1,6 +1,10 @@
 import React from "react";
 
-const AllThings = ({ things }) =>
-  things.map((thing) => <div key={thing.name}>{thing.name}</div>);
+const AllThings = ({ things, onAddThingHandler }) =>
+  things.map((thing) => (
+    <button key={thing.name} onClick={() => onAddThingHandler(thing)}>
+      {thing.name}
+    </button>
+  ));
 
 export default AllThings;
