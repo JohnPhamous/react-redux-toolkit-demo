@@ -19,6 +19,7 @@ import {
 function App() {
   const dispatch = useDispatch();
   const allThings = useSelector(selectFilteredAllThings);
+  const { isLoading, hasError } = useSelector((state) => state.allThings);
   const myThings = useSelector(selectFilteredMyThings);
   const searchTerm = useSelector(selectSearchTerm);
 
@@ -42,6 +43,26 @@ function App() {
     dispatch(clearSearchTerm());
   };
 
+  const onTryAgainHandler = () => {
+    dispatch(loadThings());
+  };
+
+  if (isLoading) {
+    return (
+      <main>
+        <h1>Loading...</h1>
+      </main>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <main>
+        <h1>An error has occurred while getting the things.</h1>
+        <button onClick={onTryAgainHandler}>Try again</button>
+      </main>
+    );
+  }
   return (
     <main>
       <section>
