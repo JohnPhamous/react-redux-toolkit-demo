@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import allThingsReducer from "../slices/allThingsSlice";
-import myThingsReducer from "../slices/myThingsSlice";
-import searchReducer from "../slices/searchSlice";
+import allThingsReducer from "../features/allThings/allThingsSlice";
+import myThingsReducer from "../features/myThings/myThingsSlice";
+import searchReducer from "../features/search/searchSlice";
 
 export default configureStore({
   reducer: {

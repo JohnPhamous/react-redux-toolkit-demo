@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { selectSearchTerm } from "./searchSlice";
+import { selectSearchTerm } from "../search/searchSlice";
 
 export const allThingsSlice = createSlice({
   name: "allThings",

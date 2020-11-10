@@ -1,20 +1,23 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { loadThings, selectFilteredAllThings } from "./slices/allThingsSlice";
-import AllThings from "./features/allThings/AllThings";
+import {
+  loadThings,
+  selectFilteredAllThings,
+} from "../features/allThings/allThingsSlice";
+import AllThings from "../features/allThings/AllThings";
 import {
   addThing,
   removeThing,
   selectFilteredMyThings,
-} from "./slices/myThingsSlice";
-import MyThings from "./features/myThings/MyThings";
-import Search from "./features/search/Search";
+} from "../features/myThings/myThingsSlice";
+import MyThings from "../features/myThings/MyThings";
+import Search from "../features/search/Search";
 import {
   clearSearchTerm,
   selectSearchTerm,
   setSearchTerm,
-} from "./slices/searchSlice";
+} from "../features/search/searchSlice";
 
 function App() {
   const dispatch = useDispatch();
