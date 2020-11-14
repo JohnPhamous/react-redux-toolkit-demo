@@ -47,9 +47,9 @@ export const loadRecipes = () => async (dispatch) => {
   dispatch(startGetRecipes());
 
   try {
-    const data = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");
+    const data = await fetch("https://api.npoint.io/1047c9803849cb3d103f");
     const json = await data.json();
-    dispatch(endGetRecipesWithSuccess(json["results"]));
+    dispatch(endGetRecipesWithSuccess(json));
   } catch (_err) {
     dispatch(endGetRecipesWithError());
   }
