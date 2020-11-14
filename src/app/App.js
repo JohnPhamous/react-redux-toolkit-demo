@@ -35,18 +35,23 @@ function App() {
     );
   }
   return (
-    <main>
-      <section>
+    <>
+      <header>
+        <h2>Search</h2>
         <Search />
-      </section>
-      <section>
-        <AllRecipes />
-      </section>
-      <hr />
-      <section>
-        <FavoriteRecipes />
-      </section>
-    </main>
+      </header>
+      <main id="recipes">
+        <section id="all-recipes">
+          <h2>All Recipes</h2>
+          <AllRecipes />
+        </section>
+        <hr />
+        <section id="favorite-recipes">
+          <h2>Favorite Recipes</h2>
+          <FavoriteRecipes />
+        </section>
+      </main>
+    </>
   );
 }
 
