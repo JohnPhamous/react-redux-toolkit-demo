@@ -1,5 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { selectSearchTerm } from "../search/searchSlice";
+
+export const loadRecipes = createAsyncThunk(
+  "allRecipes/getAllRecipes",
+  async () => {
+    const data = await fetch("https://api.npoint.io/1047c9803849cb3d103f");
+    const json = await data.json();
+
+    return json;
+  }
+);
 
 export const allRecipesSlice = createSlice({
   name: "allRecipes",
@@ -8,29 +18,24 @@ export const allRecipesSlice = createSlice({
     isLoading: false,
     hasError: false,
   },
-  reducers: {
-    startGetRecipes: (state) => {
+  reducers: {},
+  extraReducers: {
+    [loadRecipes.pending]: (state) => {
       state.isLoading = true;
       state.hasError = false;
     },
-    endGetRecipesWithSuccess: (state, action) => {
+    [loadRecipes.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.hasError = false;
       state.recipes = action.payload;
     },
-    endGetRecipesWithError: (state) => {
+    [loadRecipes.rejected]: (state) => {
       state.isLoading = false;
       state.hasError = true;
       state.recipes = [];
     },
   },
 });
-
-export const {
-  startGetRecipes,
-  endGetRecipesWithSuccess,
-  endGetRecipesWithError,
-} = allRecipesSlice.actions;
 
 export const selectAllRecipes = (state) => state.allRecipes.recipes;
 
@@ -41,18 +46,6 @@ export const selectFilteredAllRecipes = (state) => {
   return allRecipes.filter((recipe) =>
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-};
-
-export const loadRecipes = () => async (dispatch) => {
-  dispatch(startGetRecipes());
-
-  try {
-    const data = await fetch("https://api.npoint.io/1047c9803849cb3d103f");
-    const json = await data.json();
-    dispatch(endGetRecipesWithSuccess(json));
-  } catch (_err) {
-    dispatch(endGetRecipesWithError());
-  }
 };
 
 export default allRecipesSlice.reducer;
