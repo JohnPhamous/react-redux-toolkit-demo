@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import allThingsReducer from "../features/allThings/allThingsSlice";
-import myThingsReducer from "../features/myThings/myThingsSlice";
+import allRecipesReducer from "../features/allRecipes/allRecipesSlice";
+import favoriteRecipesReducer from "../features/favoriteRecipes/favoriteRecipesSlice";
 import searchReducer from "../features/search/searchSlice";
 
 export default configureStore({
   reducer: {
-    allThings: allThingsReducer,
-    myThings: myThingsReducer,
+    allRecipes: allRecipesReducer,
+    favoriteRecipes: favoriteRecipesReducer,
     search: searchReducer,
   },
 });

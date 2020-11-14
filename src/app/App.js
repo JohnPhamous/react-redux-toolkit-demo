@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  loadThings,
-  selectFilteredAllThings,
-} from "../features/allThings/allThingsSlice";
-import AllThings from "../features/allThings/AllThings";
+  loadRecipes,
+  selectFilteredAllRecipes,
+} from "../features/allRecipes/allRecipesSlice";
+import AllRecipes from "../features/allRecipes/AllRecipes";
 import {
-  addThing,
-  removeThing,
-  selectFilteredMyThings,
-} from "../features/myThings/myThingsSlice";
-import MyThings from "../features/myThings/MyThings";
+  addFavoriteRecipe,
+  removeFavoriteRecipe,
+  selectFilteredFavoriteRecipes,
+} from "../features/favoriteRecipes/favoriteRecipesSlice";
+import FavoriteRecipes from "../features/favoriteRecipes/FavoriteRecipes";
 import Search from "../features/search/Search";
 import {
   clearSearchTerm,
@@ -21,21 +21,21 @@ import {
 
 function App() {
   const dispatch = useDispatch();
-  const allThings = useSelector(selectFilteredAllThings);
-  const { isLoading, hasError } = useSelector((state) => state.allThings);
-  const myThings = useSelector(selectFilteredMyThings);
+  const allRecipes = useSelector(selectFilteredAllRecipes);
+  const { isLoading, hasError } = useSelector((state) => state.allRecipes);
+  const favoriteRecipes = useSelector(selectFilteredFavoriteRecipes);
   const searchTerm = useSelector(selectSearchTerm);
 
   useEffect(() => {
-    dispatch(loadThings());
+    dispatch(loadRecipes());
   }, [dispatch]);
 
-  const onAddThingHandler = (thing) => {
-    dispatch(addThing(thing));
+  const onAddFavoriteRecipeHandler = (recipe) => {
+    dispatch(addFavoriteRecipe(recipe));
   };
 
-  const onRemoveThingHandler = (thing) => {
-    dispatch(removeThing(thing));
+  const onRemoveFavoriteRecipeHandler = (recipe) => {
+    dispatch(removeFavoriteRecipe(recipe));
   };
 
   const onSearchChangeHandler = (e) => {
@@ -47,7 +47,7 @@ function App() {
   };
 
   const onTryAgainHandler = () => {
-    dispatch(loadThings());
+    dispatch(loadRecipes());
   };
 
   if (isLoading) {
@@ -61,7 +61,7 @@ function App() {
   if (hasError) {
     return (
       <main>
-        <h1>An error has occurred while getting the things.</h1>
+        <h1>An error has occurred while getting the recipes.</h1>
         <button onClick={onTryAgainHandler}>Try again</button>
       </main>
     );
@@ -76,13 +76,16 @@ function App() {
         />
       </section>
       <section>
-        <AllThings things={allThings} onAddThingHandler={onAddThingHandler} />
+        <AllRecipes
+          recipes={allRecipes}
+          onAddFavoriteRecipeHandler={onAddFavoriteRecipeHandler}
+        />
       </section>
       <hr />
       <section>
-        <MyThings
-          things={myThings}
-          onRemoveThingHandler={onRemoveThingHandler}
+        <FavoriteRecipes
+          recipes={favoriteRecipes}
+          onRemoveFavoriteRecipeHandler={onRemoveFavoriteRecipeHandler}
         />
       </section>
     </main>
