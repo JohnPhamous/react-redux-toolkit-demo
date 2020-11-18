@@ -4,7 +4,7 @@ import { selectSearchTerm } from "../search/searchSlice";
 export const loadRecipes = createAsyncThunk(
   "allRecipes/getAllRecipes",
   async () => {
-    const data = await fetch("https://api.npoint.io/1047c9803849cb3d103f");
+    const data = await fetch("api/recipes");
     const json = await data.json();
 
     return json;
