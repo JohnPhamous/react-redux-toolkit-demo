@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  addFavoriteRecipe,
+  removeFavoriteRecipe,
+} from "../favoriteRecipes/favoriteRecipesSlice";
 import { selectSearchTerm } from "../search/searchSlice";
 
 export const loadRecipes = createAsyncThunk(
   "allRecipes/getAllRecipes",
   async () => {
-    const data = await fetch("api/recipes");
+    const data = await fetch("api/recipes?limit=10");
     const json = await data.json();
 
     return json;
@@ -19,21 +23,30 @@ export const allRecipesSlice = createSlice({
     hasError: false,
   },
   reducers: {},
-  extraReducers: {
-    [loadRecipes.pending]: (state) => {
-      state.isLoading = true;
-      state.hasError = false;
-    },
-    [loadRecipes.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.hasError = false;
-      state.recipes = action.payload;
-    },
-    [loadRecipes.rejected]: (state) => {
-      state.isLoading = false;
-      state.hasError = true;
-      state.recipes = [];
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadRecipes.pending, (state) => {
+        state.isLoading = true;
+        state.hasError = false;
+      })
+      .addCase(loadRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.hasError = false;
+        state.recipes = action.payload;
+      })
+      .addCase(loadRecipes.rejected, (state) => {
+        state.isLoading = false;
+        state.hasError = true;
+        state.recipes = [];
+      })
+      .addCase(addFavoriteRecipe.type, (state, action) => {
+        state.recipes = state.recipes.filter(
+          (recipe) => recipe.id !== action.payload.id
+        );
+      })
+      .addCase(removeFavoriteRecipe.type, (state, action) => {
+        state.recipes.push(action.payload);
+      });
   },
 });
 
