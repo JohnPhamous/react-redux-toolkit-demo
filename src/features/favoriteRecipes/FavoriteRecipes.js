@@ -13,15 +13,20 @@ const FavoriteRecipes = () => {
     dispatch(removeFavoriteRecipe(recipe));
   };
 
-  return favoriteRecipes.map((recipe) => (
-    <button
-      key={recipe.id}
-      onClick={() => onRemoveFavoriteRecipeHandler(recipe)}
-    >
-      <img src={recipe.img} alt="" />
-      {recipe.name}
-    </button>
-  ));
+  return (
+    <div className="recipes-container">
+      {favoriteRecipes.map((recipe) => (
+        <button
+          key={recipe.id}
+          onClick={() => onRemoveFavoriteRecipeHandler(recipe)}
+          className="recipe"
+        >
+          <h3 className="recipe-name">{recipe.name}</h3>
+          <img src={recipe.img} alt="" />
+        </button>
+      ))}
+    </div>
+  );
 };
 
 export default FavoriteRecipes;

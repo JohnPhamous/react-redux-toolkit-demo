@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loadRecipes } from "../features/allRecipes/allRecipesSlice";
 import AllRecipes from "../features/allRecipes/AllRecipes";
@@ -35,23 +34,21 @@ function App() {
     );
   }
   return (
-    <>
+    <div id="app">
       <header>
-        <h2>Search</h2>
         <Search />
       </header>
-      <main id="recipes">
-        <section id="all-recipes">
-          <h2>All Recipes</h2>
+      <main id="recipes-wrapper">
+        <section id="all-recipes" className="recipes-section">
+          <h2 className="header">Recipes</h2>
           <AllRecipes />
         </section>
-        <hr />
-        <section id="favorite-recipes">
-          <h2>Favorite Recipes</h2>
+        <section id="favorite-recipes" className="recipes-section">
+          <h2 className="header">Favorites</h2>
           <FavoriteRecipes />
         </section>
       </main>
-    </>
+    </div>
   );
 }
 

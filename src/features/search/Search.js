@@ -20,7 +20,13 @@ const Search = () => {
 
   return (
     <>
-      <input type="text" value={searchTerm} onChange={onSearchChangeHandler} />
+      <input
+        id="search"
+        type="text"
+        value={searchTerm}
+        onChange={onSearchChangeHandler}
+        placeholder="Search recipes"
+      />
       <button onClick={onSearchTermClearHandler}>X</button>
     </>
   );

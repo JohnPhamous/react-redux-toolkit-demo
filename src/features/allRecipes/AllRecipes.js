@@ -11,12 +11,20 @@ const AllRecipes = () => {
     dispatch(addFavoriteRecipe(recipe));
   };
 
-  return allRecipes.map((recipe) => (
-    <button key={recipe.id} onClick={() => onAddFavoriteRecipeHandler(recipe)}>
-      <img src={recipe.img} alt="" />
-      {recipe.name}
-    </button>
-  ));
+  return (
+    <div className="recipes-container">
+      {allRecipes.map((recipe) => (
+        <button
+          key={recipe.id}
+          onClick={() => onAddFavoriteRecipeHandler(recipe)}
+          className="recipe"
+        >
+          <h3 className="recipe-name">{recipe.name}</h3>
+          <img src={recipe.img} alt="" />
+        </button>
+      ))}
+    </div>
+  );
 };
 
 export default AllRecipes;
