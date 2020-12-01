@@ -39,7 +39,7 @@ function App() {
         <Search />
       </header>
       <main id="recipes-wrapper">
-        <section id="all-recipes" className="recipes-section">
+        <section className="recipes-section">
           <h2 className="header">Recipes</h2>
           <AllRecipes />
         </section>

@@ -124,9 +124,6 @@ body,
   padding: 32px 36px;
 }
 
-#all-recipes {
-}
-
 #favorite-recipes {
   background-color: #f2f2f2;
   flex-grow: 1;
