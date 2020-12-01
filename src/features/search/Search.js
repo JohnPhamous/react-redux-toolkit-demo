@@ -19,7 +19,10 @@ const Search = () => {
   };
 
   return (
-    <>
+    <div id="search-container">
+      <span id="search-icon" aria-hidden="true">
+        🔎
+      </span>
       <input
         id="search"
         type="text"
@@ -27,8 +30,14 @@ const Search = () => {
         onChange={onSearchChangeHandler}
         placeholder="Search recipes"
       />
-      <button onClick={onSearchTermClearHandler}>X</button>
-    </>
+      <button
+        onClick={onSearchTermClearHandler}
+        type="button"
+        id="search-clear-button"
+      >
+        X
+      </button>
+    </div>
   );
 };
 
