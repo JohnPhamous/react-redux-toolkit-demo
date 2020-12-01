@@ -36,7 +36,7 @@ const Search = () => {
           type="button"
           id="search-clear-button"
         >
-          X
+          ✖
         </button>
       )}
     </div>

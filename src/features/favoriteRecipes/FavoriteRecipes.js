@@ -21,6 +21,7 @@ const FavoriteRecipes = () => {
         <Recipe recipe={recipe} key={recipe.id}>
           <FavoriteButton
             onClickHandler={() => onRemoveFavoriteRecipeHandler(recipe)}
+            icon="💔"
           >
             Remove Favorite
           </FavoriteButton>

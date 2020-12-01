@@ -19,6 +19,7 @@ const AllRecipes = () => {
         <Recipe recipe={recipe} key={recipe.id}>
           <FavoriteButton
             onClickHandler={() => onAddFavoriteRecipeHandler(recipe)}
+            icon="🧡"
           >
             Add to Favorites
           </FavoriteButton>

@@ -86,7 +86,7 @@ body,
 .recipe:hover > .favorite-button,
 .recipe:focus > .favorite-button,
 .recipe:focus-within > .favorite-button {
-  display: block;
+  display: flex;
 }
 
 .recipe:hover .recipe-image,
@@ -141,9 +141,8 @@ body,
   font-size: 12px;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
   display: none;
+  align-items: center;
   grid-row-start: 1;
   grid-column-start: 1;
   margin: auto;
@@ -153,5 +152,4 @@ body,
 .heart-icon {
   color: #fd4d3f;
   margin-right: 5px;
-  font-size: 20px;
 }
