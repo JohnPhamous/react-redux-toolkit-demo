@@ -51,7 +51,7 @@ body,
 
 .recipes-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(157px, 1fr));
   grid-column-gap: 12px;
   grid-row-gap: 12px;
 }
