@@ -1,5 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FavoriteButton from "../../components/FavoriteButton";
+import Recipe from "../../components/Recipe";
 import { addFavoriteRecipe } from "../favoriteRecipes/favoriteRecipesSlice";
 import { selectFilteredAllRecipes } from "./allRecipesSlice";
 
@@ -14,14 +16,13 @@ const AllRecipes = () => {
   return (
     <div className="recipes-container">
       {allRecipes.map((recipe) => (
-        <button
-          key={recipe.id}
-          onClick={() => onAddFavoriteRecipeHandler(recipe)}
-          className="recipe"
-        >
-          <h3 className="recipe-name">{recipe.name}</h3>
-          <img src={recipe.img} alt="" />
-        </button>
+        <Recipe recipe={recipe} key={recipe.id}>
+          <FavoriteButton
+            onClickHandler={() => onAddFavoriteRecipeHandler(recipe)}
+          >
+            Add to Favorites
+          </FavoriteButton>
+        </Recipe>
       ))}
     </div>
   );

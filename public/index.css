@@ -12,6 +12,7 @@ body,
 #app {
   display: flex;
   flex-direction: column;
+  color: #141c3a;
 }
 
 #search {
@@ -42,21 +43,47 @@ body,
   border: solid 1px #141c3a;
   background-color: #f7f7f7;
   text-align: left;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.recipe:hover,
+.recipe:focus,
+.recipe:focus-within {
+  background: #141c3a;
+  color: #ffffff;
+}
+
+.recipe:hover > .favorite-button,
+.recipe:focus > .favorite-button,
+.recipe:focus-within > .favorite-button {
+  display: block;
+}
+
+.recipe:hover .recipe-image,
+.recipe:focus .recipe-image,
+.recipe:focus-within .recipe-image {
+  opacity: 0.7;
 }
 
 .recipe-name {
   font-size: 20px;
   font-weight: bold;
-  color: #141c3a;
   margin: 0;
   margin-bottom: 8px;
 }
 
 .recipes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(157px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(157px, 1fr));
   grid-column-gap: 12px;
   grid-row-gap: 12px;
+}
+
+.recipe-container {
+  grid-row-start: 1;
+  grid-column-start: 1;
 }
 
 #recipes-wrapper {
@@ -75,4 +102,28 @@ body,
 #favorite-recipes {
   background-color: #f2f2f2;
   flex-grow: 1;
+}
+
+.favorite-button {
+  padding: 5px 7px;
+  border-radius: 4px;
+  background-color: #efd9ca;
+  font-weight: bold;
+  color: #141c3a;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  display: none;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  margin: auto;
+  z-index: 1;
+}
+
+.heart-icon {
+  color: #fd4d3f;
+  margin-right: 5px;
+  font-size: 20px;
 }
