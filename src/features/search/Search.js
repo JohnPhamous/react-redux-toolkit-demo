@@ -30,13 +30,15 @@ const Search = () => {
         onChange={onSearchChangeHandler}
         placeholder="Search recipes"
       />
-      <button
-        onClick={onSearchTermClearHandler}
-        type="button"
-        id="search-clear-button"
-      >
-        X
-      </button>
+      {searchTerm.length > 0 && (
+        <button
+          onClick={onSearchTermClearHandler}
+          type="button"
+          id="search-clear-button"
+        >
+          X
+        </button>
+      )}
     </div>
   );
 };

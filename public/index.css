@@ -69,7 +69,7 @@ body,
   padding: 16px 13px 16px 14px;
   border-radius: 6px;
   border: solid 1px #141c3a;
-  background-color: #f7f7f7;
+  background-color: none;
   text-align: left;
   display: grid;
   grid-template-columns: 1fr;
