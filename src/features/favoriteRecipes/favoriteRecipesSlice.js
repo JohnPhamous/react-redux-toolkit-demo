@@ -3,17 +3,13 @@ import { selectSearchTerm } from "../search/searchSlice";
 
 export const favoriteRecipesSlice = createSlice({
   name: "favoriteRecipes",
-  initialState: {
-    recipes: [],
-  },
+  initialState: [],
   reducers: {
     addFavoriteRecipe: (state, action) => {
-      state.recipes.push(action.payload);
+      state.push(action.payload);
     },
     removeFavoriteRecipe: (state, action) => {
-      state.recipes = state.recipes.filter(
-        (recipe) => recipe.name !== action.payload.name
-      );
+      return state.filter((recipe) => recipe.name !== action.payload.name);
     },
   },
 });
@@ -23,7 +19,7 @@ export const {
   removeFavoriteRecipe,
 } = favoriteRecipesSlice.actions;
 
-export const selectFavoriteRecipes = (state) => state.favoriteRecipes.recipes;
+export const selectFavoriteRecipes = (state) => state.favoriteRecipes;
 
 export const selectFilteredFavoriteRecipes = (state) => {
   const favoriteRecipes = selectFavoriteRecipes(state);
