@@ -7,7 +7,7 @@ import Search from "../features/search/Search";
 
 function App() {
   const dispatch = useDispatch();
-  const { isLoading, hasError } = useSelector((state) => state.allRecipes);
+  const { hasError } = useSelector((state) => state.allRecipes);
 
   useEffect(() => {
     dispatch(loadRecipes());
@@ -17,36 +17,32 @@ function App() {
     dispatch(loadRecipes());
   };
 
-  if (isLoading) {
-    return (
-      <main>
-        <h1>Loading...</h1>
-      </main>
-    );
-  }
-
-  if (hasError) {
-    return (
-      <main>
-        <h1>An error has occurred while getting the recipes.</h1>
-        <button onClick={onTryAgainHandler}>Try again</button>
-      </main>
-    );
-  }
   return (
     <div id="app">
       <header>
         <Search />
       </header>
       <main id="recipes-wrapper">
-        <section className="recipes-section">
-          <h2 className="header">Recipes</h2>
-          <AllRecipes />
-        </section>
-        <section id="favorite-recipes" className="recipes-section">
-          <h2 className="header">Favorites</h2>
-          <FavoriteRecipes />
-        </section>
+        {hasError ? (
+          <div id="error-wrapper">
+            <h1>
+              Oh no! There was a mess in the kitchen and we couldn't get the
+              recipes.
+            </h1>
+            <button onClick={onTryAgainHandler}>Try again</button>
+          </div>
+        ) : (
+          <>
+            <section className="recipes-section">
+              <h2 className="header">Recipes</h2>
+              <AllRecipes />
+            </section>
+            <section id="favorite-recipes" className="recipes-section">
+              <h2 className="header">Favorites</h2>
+              <FavoriteRecipes />
+            </section>
+          </>
+        )}
       </main>
     </div>
   );

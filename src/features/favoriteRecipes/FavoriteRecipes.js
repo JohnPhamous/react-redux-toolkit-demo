@@ -7,14 +7,20 @@ import {
   removeFavoriteRecipe,
 } from "./favoriteRecipesSlice";
 import UnfavoriteIcon from "../../assets/unfavorite.svg";
+import Spinner from "../../components/Spinner";
 
 const FavoriteRecipes = () => {
   const dispatch = useDispatch();
   const favoriteRecipes = useSelector(selectFilteredFavoriteRecipes);
+  const { isLoading } = useSelector((state) => state.allRecipes);
 
   const onRemoveFavoriteRecipeHandler = (recipe) => {
     dispatch(removeFavoriteRecipe(recipe));
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="recipes-container">
