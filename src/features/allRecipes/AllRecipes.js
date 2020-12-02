@@ -4,6 +4,7 @@ import FavoriteButton from "../../components/FavoriteButton";
 import Recipe from "../../components/Recipe";
 import { addFavoriteRecipe } from "../favoriteRecipes/favoriteRecipesSlice";
 import { selectFilteredAllRecipes } from "./allRecipesSlice";
+import UnfavoriteIcon from "../../assets/unfavorite.svg";
 
 const AllRecipes = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const AllRecipes = () => {
         <Recipe recipe={recipe} key={recipe.id}>
           <FavoriteButton
             onClickHandler={() => onAddFavoriteRecipeHandler(recipe)}
-            icon="🧡"
+            icon={UnfavoriteIcon}
           >
             Add to Favorites
           </FavoriteButton>

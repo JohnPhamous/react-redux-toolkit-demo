@@ -31,9 +31,10 @@ body,
 }
 
 #search-icon {
+  opacity: 0.5;
   position: absolute;
-  top: 38px;
-  left: 46px;
+  top: 42px;
+  left: 53px;
 }
 
 #search::placeholder {
@@ -55,6 +56,8 @@ body,
   border-radius: 100px;
   z-index: 2;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .header {
@@ -104,7 +107,7 @@ body,
 
 .recipes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(157px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-column-gap: 12px;
   grid-row-gap: 12px;
 }

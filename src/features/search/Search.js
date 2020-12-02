@@ -5,6 +5,8 @@ import {
   selectSearchTerm,
   setSearchTerm,
 } from "./searchSlice";
+import SearchIcon from "../../assets/search.svg";
+import ClearIcon from "../../assets/clear.svg";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -20,9 +22,7 @@ const Search = () => {
 
   return (
     <div id="search-container">
-      <span id="search-icon" aria-hidden="true">
-        🔎
-      </span>
+      <img id="search-icon" alt="" src={SearchIcon} />
       <input
         id="search"
         type="text"
@@ -36,7 +36,7 @@ const Search = () => {
           type="button"
           id="search-clear-button"
         >
-          ✖
+          <img src={ClearIcon} alt="" />
         </button>
       )}
     </div>

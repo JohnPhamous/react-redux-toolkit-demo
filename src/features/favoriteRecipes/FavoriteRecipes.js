@@ -6,6 +6,7 @@ import {
   selectFilteredFavoriteRecipes,
   removeFavoriteRecipe,
 } from "./favoriteRecipesSlice";
+import UnfavoriteIcon from "../../assets/unfavorite.svg";
 
 const FavoriteRecipes = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const FavoriteRecipes = () => {
         <Recipe recipe={recipe} key={recipe.id}>
           <FavoriteButton
             onClickHandler={() => onRemoveFavoriteRecipeHandler(recipe)}
-            icon="💔"
+            icon={UnfavoriteIcon}
           >
             Remove Favorite
           </FavoriteButton>
